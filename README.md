@@ -5,6 +5,9 @@ Captures and uploads multiple webcam images and sound recordings to a PHP script
 
 ## Usage
 
+Copy config-example to config and edit it. You'll need my nlogrotate script which
+can be found (here)[https://github.com/nonoo/nlogrotate].
+
 There are two scripts:
 
 - *camcapture.sh*: loads and executes each config file in the *cameras* subdir.
