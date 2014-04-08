@@ -1,3 +1,22 @@
+ntimelapse-upload
+=================
+
+Captures and uploads multiple webcam images and sound recordings to a PHP script.
+
+Usage
+-----
+
+There are two scripts:
+
+- *camcapture.sh*: loads and executes each config file in the *cameras* subdir.
+- *sndcapture.sh*: loads and executes each config file in the *soundcards* subdir.
+
+# camcapture.sh
+
+Here's an example config for a webcam, this should be placed in the *cameras* subdir,
+with the file name *camname.inc.sh*:
+
+````
 enabled=0
 camname=${camconfig%%.*}
 imagefile="$tempcapturedir/$camname.jpg"
@@ -8,14 +27,45 @@ capturecommand3="$uvccapture -v -d$device -x1280 -y720 -D3 -o$imagefile"
 capturecommand4=
 capturecommand5=
 uploadurl="http://ntimelapse/upload.php?p=pass&i=$camname&d=`date +%Y%m%d%H%M%S`"
+````
 
+# sndcapture.sh
+
+Explanation of the parameters:
+
+- *enabled*: if it's 1, then the config file is enabled.
+- *camname*: this is the camera name which is derived from the config file name
+             (for example if the file name is camname.inc.sh, then the camera's
+             name will be camname).
+- *imagefile*: this is the file where the image will be (temporarily) saved.
+- *device*: the v4l device file of the webcam.
+- *capturecommands*: these commands will be executed to capture the image.
+- *uploadurl*: if this is set, then the image file will be uploaded to the given
+               URL with curl.
+
+An example soundcard config which records 20 seconds from the ALSA audio device
+hw:1,0, and then encodes it with lame.
+
+````
 enabled=1
 sndcardname=${sndcardconfig%%.*}
 soundfile="$tempcapturedir/$sndcardname.wav"
-device=/dev/dsp1
-capturecommand1="AUDIODEV=hw:1,0 rec $soundfile trim 0 20"
-capturecommand2=
-capturecommand3=
+capturecommand1="AUDIODEV=hw:1,0 rec -q $soundfile trim 0 20"
+capturecommand2="lame -S -b 320 -m s -q 0 $soundfile"
+capturecommand3="rm -f $soundfile"
+soundfile=$soundfile.mp3
 capturecommand4=
 capturecommand5=
-uploadurl="http://ntimelapse/upload.php?p=pass&s=$sndcardname&d=`date +%Y%m%d%H%M%S`"
+uploadurl="http://ntimelapse/upload.php?p=pass3&s=$sndcardname&d=`date +%Y%m%d%H%M%S`"
+````
+
+Explanation of the parameters:
+
+- *enabled*: if it's 1, then the config file is enabled.
+- *sndcardname*: this is the sound card name which is derived from the config
+                 file name (for example if the file name is test.inc.sh, then
+                 the sound card's name will be test).
+- *soundfile*: this is the file where the image will be (temporarily) saved.
+- *capturecommands*: these commands will be executed to capture the image.
+- *uploadurl*: if this is set, then the sound file will be uploaded to the given
+               URL with curl.
