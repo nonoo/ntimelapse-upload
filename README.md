@@ -3,15 +3,14 @@ ntimelapse-upload
 
 Captures and uploads multiple webcam images and sound recordings to a PHP script.
 
-Usage
------
+## Usage
 
 There are two scripts:
 
 - *camcapture.sh*: loads and executes each config file in the *cameras* subdir.
 - *sndcapture.sh*: loads and executes each config file in the *soundcards* subdir.
 
-# camcapture.sh
+### camcapture.sh
 
 Here's an example config for a webcam, this should be placed in the *cameras* subdir,
 with the file name *camname.inc.sh*:
@@ -29,7 +28,7 @@ capturecommand5=
 uploadurl="http://ntimelapse/upload.php?p=pass&i=$camname&d=`date +%Y%m%d%H%M%S`"
 ````
 
-# sndcapture.sh
+### sndcapture.sh
 
 Explanation of the parameters:
 
