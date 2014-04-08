@@ -1,0 +1,10 @@
+# Path to the uvccapture and v4lctl binaries.
+uvccapture=/opt/uvccapture-0.5-nonoo-r4/uvccapture
+v4lctl=v4l2-ctl
+
+# This is the temporary directory where captured images
+# and sounds will be stored until they get uploaded.
+tempcapturedir=/tmp
+
+logfile=/var/log/nbackup.log
+nlogrotatepath=/opt/nlogrotate
