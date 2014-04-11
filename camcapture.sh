@@ -54,9 +54,9 @@ for camconfig in `ls $scriptdir/cameras`; do
 	if [ "$uploadurl" != "" ]; then
 		if [ -e $imagefile ]; then
 			echo "  uploading..."
-			curl -s -F FILE1=@$imagefile "$uploadurl"
+			response=`curl -s -F FILE1=@$imagefile "$uploadurl"`
 			result=$?
-			if [ $result -ne 0 ]; then
+			if [ $result -ne 0 ] || [ "$response" != "ok" ]; then
 				echo "  upload error: curl exited with error code $result."
 			else
 				echo "  upload: ok"
