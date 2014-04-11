@@ -58,7 +58,7 @@ capturecommand3="rm -f $soundfile"
 soundfile=$soundfile.mp3
 capturecommand4=
 capturecommand5=
-uploadurl="http://ntimelapse/upload.php?p=pass3&s=$sndcardname&d=`date +%Y%m%d%H%M%S`"
+uploadurl="http://ntimelapse/upload.php?p=pass3&i=$sndcardname&d=`date +%Y%m%d%H%M%S`"
 ````
 
 Explanation of the parameters:
