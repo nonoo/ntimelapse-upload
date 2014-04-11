@@ -54,7 +54,7 @@ for sndcardconfig in `ls $scriptdir/soundcards`; do
 	if [ "$uploadurl" != "" ]; then
 		if [ -e $soundfile ]; then
 			echo "  uploading..."
-			curl -F FILE1=@$soundfile "$uploadurl"
+			curl -s -F FILE1=@$soundfile "$uploadurl"
 			result=$?
 			if [ $result -ne 0 ]; then
 				echo "  upload error: curl exited with error code $result."
