@@ -28,7 +28,7 @@ capturecommand2="$uvccapture -v -d$device -x1280 -y720 -D4"
 capturecommand3="$uvccapture -v -d$device -x1280 -y720 -D3 -o$imagefile"
 capturecommand4=
 capturecommand5=
-uploadurl="http://ntimelapse/upload.php?p=pass&i=$camname&d=`date +%Y%m%d%H%M%S`"
+uploadurl="http://ntimelapse/upload.php?p=pass&i=$camname&d=`date +%s`"
 ````
 
 ### sndcapture.sh
@@ -58,7 +58,7 @@ capturecommand3="rm -f $soundfile"
 soundfile=$soundfile.mp3
 capturecommand4=
 capturecommand5=
-uploadurl="http://ntimelapse/upload.php?p=pass3&i=$sndcardname&d=`date +%Y%m%d%H%M%S`"
+uploadurl="http://ntimelapse/upload.php?p=pass3&i=$sndcardname&d=`date +%s`"
 ````
 
 Explanation of the parameters:
