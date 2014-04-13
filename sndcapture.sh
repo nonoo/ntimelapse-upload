@@ -7,13 +7,13 @@ scriptdir=${self%$scriptname}
 . $scriptdir/config
 . $nlogrotatepath/redirectlog.src.sh
 
+# Appending "-snd" to the log file name to distinct it from camcapure.sh's log.
+logfile=`echo $logfile | sed -r 's/\.[^\.]+$//'`-snd.log
+
 if [ "$1" = "quiet" ]; then
 	quietmode=1
 	redirectlog
 fi
-
-# Appending "-snd" to the log file name to distinct it from camcapure.sh's log.
-logfile=`echo $logfile | sed -r 's/\.[^\.]+$//'`-snd.log
 
 for sndcardconfig in `ls $scriptdir/soundcards`; do
 	capturecommand1=
