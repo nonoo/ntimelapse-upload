@@ -12,6 +12,9 @@ if [ "$1" = "quiet" ]; then
 	redirectlog
 fi
 
+# Appending "-snd" to the log file name to distinct it from camcapure.sh's log.
+logfile=`echo $logfile | sed -r 's/\.[^\.]+$//'`-snd.log
+
 for sndcardconfig in `ls $scriptdir/soundcards`; do
 	capturecommand1=
 	capturecommand2=
