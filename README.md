@@ -1,7 +1,8 @@
 ntimelapse-upload
 =================
 
-Captures and uploads multiple webcam images and sound recordings to a PHP script.
+Captures and uploads multiple webcam images and sound recordings to a PHP script
+in [ntimelapse](https://github.com/nonoo/ntimelapse).
 
 ## Usage
 
