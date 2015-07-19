@@ -2,3 +2,4 @@ config
 *.config.inc.sh
 *.log
 *.log.*
+helpers
